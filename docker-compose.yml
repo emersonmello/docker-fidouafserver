@@ -1,0 +1,20 @@
+version: '2'
+services:
+
+  tomcat:
+    build: tomcat
+    ports:
+      - "8000:8080"
+    depends_on:
+      - db
+
+  db:
+    build: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=fido
+      - MYSQL_USER=fidouaf
+      - MYSQL_PASSWORD=fidoUAF
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
