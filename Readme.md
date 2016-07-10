@@ -23,6 +23,7 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 1. `cd UAF`
 1. Do your changes on FIDO UAF Demo Server code
 1. Be sure that JDBC properties in [fidouaf/src/main/resources/META-INF/persistence.xml](https://github.com/emersonmello/UAF/blob/master/fidouaf/src/main/resources/META-INF/persistence.xml) are like below (or feel free to change username, password, database, etc...but remember to update [docker-compose.yml](docker-compose.yml)):
+
     ```
     <properties>
 	   <property name="javax.persistence.jdbc.url" value="jdbc:mysql://db:3306/fido"/>
