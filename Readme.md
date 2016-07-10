@@ -22,7 +22,7 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 1. `git clone https://github.com/emersonmello/UAF.git`
 1. `cd UAF`
 1. Do your changes on FIDO UAF Demo Server code
-1. Be sure that JDBC properties in [fidouaf/src/main/resources/META-INF/persistence.xml](https://github.com/emersonmello/UAF/blob/master/fidouaf/src/main/resources/META-INF/persistence.xml) are like below (or feel free to change username, password, database, etc...but remember to update `docker-compose.yml`):
+1. Be sure that JDBC properties in [fidouaf/src/main/resources/META-INF/persistence.xml](https://github.com/emersonmello/UAF/blob/master/fidouaf/src/main/resources/META-INF/persistence.xml) are like below (or feel free to change username, password, database, etc...but remember to update [docker-compose.yml](docker-compose.yml)):
 ```
 <properties>
 	<property name="javax.persistence.jdbc.url" value="jdbc:mysql://db:3306/fido"/>
@@ -34,7 +34,7 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 ```
     - If you intend to change the database structure (i.e. create a new table, etc.), you should put the respective SQL instructions inside of a file (i.e. `mychanges.sql`) and:
         1. Copy `mychanges.sql` to `mysql` subdirectory of this docker project
-        1. Edit `mysql/Dockerfile` and add the line below:
+        1. Edit [mysql/Dockerfile](./mysql/Dockerfile) and add the line below:
             - `ADD mychanges.sql /docker-entrypoint-initdb.d/`
 
 1. Build the .WAR file of `fidouaf` - you can follow [Building and Running UAF Server Using Maven (CLI only) instructions](https://github.com/eBay/UAF/wiki)
