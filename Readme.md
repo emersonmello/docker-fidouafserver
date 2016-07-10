@@ -32,10 +32,11 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 	<property name="javax.persistence.schema-generation.database.action" value="create"/>
 </properties>
 ```
-    - If you intend to change the database structure (i.e. create a new table, etc.), you should put the respective SQL instructions inside of a file (i.e. `mychanges.sql`) and:
-        1. Copy `mychanges.sql` to `mysql` subdirectory of this docker project
-        1. Edit [mysql/Dockerfile](./mysql/Dockerfile) and add the line below:
-            - `ADD mychanges.sql /docker-entrypoint-initdb.d/`
+1. If you intend to change the database structure (i.e. create a new table, etc.), you should put the respective SQL instructions inside of a file (i.e. `mychanges.sql`) and:
+    1. Copy `mychanges.sql` to `mysql` subdirectory of this docker project
+    1. Edit [mysql/Dockerfile](./mysql/Dockerfile) and add the line below:
+    
+        `ADD mychanges.sql /docker-entrypoint-initdb.d/`
 
 1. Build the .WAR file of `fidouaf` - you can follow [Building and Running UAF Server Using Maven (CLI only) instructions](https://github.com/eBay/UAF/wiki)
 1. Copy the generated .WAR file (you have to rename it to fidouaf.war) to `tomcat` subdirectory of this docker project
