@@ -12,7 +12,27 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 1. `git clone http://github.com/emersonmello/docker-fidouafserver`
 1. `cd docker-fidouafserver`
 1. `docker-compose up`
-1. Apache Tomcat's container exposes port 8000 on host machine, so to access FIDO UAF Demo Server, you shall to point to `http://host-ip-address:8000/....`. You can find [UAF Server endpoints here](https://github.com/emersonmello/UAF/tree/master/fidouaf).
+1. Apache Tomcat's container exposes port 8000 on host machine, so to access FIDO UAF Demo Server, you shall to point to `http://host-ip-address:8000/....`. You can find [UAF Server endpoints here](https://github.com/emersonmello/UAF/tree/master/fidouaf)
+
+### Using mysql client inside a MySQL container
+
+1. Use `docker ps` to discovery the container' name of MySQL
+   - For example:
+   ```
+   $ docker ps --format "Name: {{.Names}}"
+   Name: dockerfidouafserver_tomcat_1
+   Name: dockerfidouafserver_db_1
+   ```
+1. Execute an interactive shell
+    - For example:
+    ```
+    $ docker exec -it dockerfidouafserver_db_1 /bin/bash
+    ```
+1. Execute mysql client
+    - For example:
+    ```
+    $ mysql fido -u fidouaf -pfidoUAF
+    ```
 
 ## Modifying FIDO UAF Demo Server code
 
