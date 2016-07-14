@@ -15,7 +15,7 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 1. Apache Tomcat's container exposes port 8000 on host machine, so to access FIDO UAF Demo Server, you shall to point to `http://host-ip-address:8000/....`. 
     - You can find [UAF Server endpoints here](https://github.com/emersonmello/UAF/tree/master/fidouaf)
 
-### Using mysql client inside a MySQL container
+## Using mysql client inside a MySQL container
 
 1. Use `docker ps` to discovery the container' name of MySQL
    - For example:
@@ -63,6 +63,7 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
 ## Modifying database structure
 
 If you intend to change the database structure (i.e. create a new table, etc.), you should put the respective SQL instructions inside of a file (i.e. `mychanges.sql`) and:
+
 1. Copy `mychanges.sql` to [mysql](mysql) subdirectory of this docker project
 1. Edit [mysql/Dockerfile](./mysql/Dockerfile) and add the line below:    
     - `ADD mychanges.sql /docker-entrypoint-initdb.d/`
