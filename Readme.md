@@ -24,15 +24,10 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
    Name: dockerfidouafserver_tomcat_1
    Name: dockerfidouafserver_db_1
    ```
-1. Execute an interactive shell
+1. Execute MySQL client
     - For example:
     ```
-    $ docker exec -it dockerfidouafserver_db_1 /bin/bash
-    ```
-1. Execute mysql client
-    - For example:
-    ```
-    $ mysql fido -u fidouaf -pfidoUAF
+    $ docker exec -it dockerfidouafserver_db_1 mysql fido -u fidouaf -pfidoUAF
     ```
 
 ## Modifying FIDO UAF Demo Server code
