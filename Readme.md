@@ -42,8 +42,11 @@ If you intend to change database connection properties (i.e hostname, port, user
                url="jdbc:mysql://db:3306/fido"/>
 ```
 
+
+
 and then:
 
+1. Remember to update [docker-compose.yml](docker-compose.yml):
 1. `docker-compose stop`
 1. `docker-compose build`
 1. `docker-compose up`
