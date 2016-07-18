@@ -30,28 +30,21 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
     $ docker exec -it dockerfidouafserver_db_1 mysql fido -u fidouaf -pfidoUAF
     ```
 
-## Modifying FIDO UAF Demo Server code
+## Modifying database connection properties
 
-1. `cd docker-fidouafserver`
+If you intend to change database connection properties (i.e hostname, port, username, password, database) you should edit [tomcat/context.xml](./tomcat/context.xml) file (Current MySQL container hostname is **db**):
+```
+<Resource name="jdbc/fidoDB" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="fidouaf" 
+               password="fidoUAF" 
+               driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://db:3306/fido"/>
+```
+
+and then:
+
 1. `docker-compose stop`
-1. `cd ..`
-1. `git clone https://github.com/emersonmello/UAF.git`
-1. `cd UAF`
-1. Do your changes on FIDO UAF Demo Server code
-1. Be sure that JDBC properties in [fidouaf/src/main/resources/META-INF/persistence.xml](https://github.com/emersonmello/UAF/blob/master/fidouaf/src/main/resources/META-INF/persistence.xml) are like below (MySQL container hostname is **db**) or feel free to change hostname, port, username, password, database, etc...but remember to update [docker-compose.yml](docker-compose.yml):
-
-    ```
-    <properties>
-	   <property name="javax.persistence.jdbc.url" value="jdbc:mysql://db:3306/fido"/>
-	   <property name="javax.persistence.jdbc.user" value="fidouaf"/>
-	   <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-	   <property name="javax.persistence.jdbc.password" value="fidoUAF"/>
-	   <property name="javax.persistence.schema-generation.database.action" value="create"/>
-    </properties>
-    ```
-1. Build the .WAR file of `fidouaf` - you can follow [Building and Running UAF Server Using Maven (CLI only) instructions](https://github.com/eBay/UAF/wiki)
-1. Copy the generated .WAR file (you have to rename it to fidouaf.war) to `tomcat` subdirectory of this docker project
-1. `cd docker-fidouafserver`
 1. `docker-compose build`
 1. `docker-compose up`
 
@@ -65,3 +58,20 @@ If you intend to change the database structure (i.e. create a new table, etc.), 
 1. `docker-compose stop`
 1. `docker-compose build`
 1. `docker-compose up`
+
+
+## Modifying FIDO UAF Demo Server code
+
+1. `cd docker-fidouafserver`
+1. `docker-compose stop`
+1. `cd ..`
+1. `git clone https://github.com/emersonmello/UAF.git`
+1. `cd UAF`
+1. Do your changes on FIDO UAF Demo Server code
+1. Build the .WAR file of `fidouaf` - you can follow [Building and Running UAF Server Using Maven (CLI only) instructions](https://github.com/eBay/UAF/wiki)
+1. Copy the generated .WAR file (you have to rename it to fidouaf.war) to `tomcat` subdirectory of this docker project
+1. `cd docker-fidouafserver`
+1. `docker-compose build`
+1. `docker-compose up`
+
+Ps: Database properties stored in [fidouaf/src/main/webapp/META-INF/context.xml](https://github.com/emersonmello/UAF/blob/master/fidouaf/src/main/webapp/META-INF/context.xml) are overwritten by properties present in [tomcat/context.xml](./tomcat/context.xml)
