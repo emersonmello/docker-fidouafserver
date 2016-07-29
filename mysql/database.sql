@@ -66,7 +66,7 @@ CREATE TABLE `facets` (
 
 LOCK TABLES `facets` WRITE;
 /*!40000 ALTER TABLE `facets` DISABLE KEYS */;
-INSERT INTO `facets` VALUES (1,'https://www.head2toes.org'),(2,'android:apk-key-hash:Df+2X53Z0UscvUu6obxC3rIfFyk'),(3,'android:apk-key-hash:bE0f1WtRJrZv/C0y9CM73bAUqiI'),(4,'android:apk-key-hash:Lir5oIjf552K/XN4bTul0VS3GfM'),(5,'https://openidconnect.ebay.com'),(6,'android:apk-key-hash:Ng+LIpapqRQkKTPwXh7yXKX5NtY');
+INSERT INTO `facets` VALUES (1,'https://www.head2toes.org'),(2,'android:apk-key-hash:Df+2X53Z0UscvUu6obxC3rIfFyk'),(3,'android:apk-key-hash:bE0f1WtRJrZv/C0y9CM73bAUqiI'),(4,'android:apk-key-hash:Lir5oIjf552K/XN4bTul0VS3GfM'),(5,'https://openidconnect.ebay.com'),(6,'android:apk-key-hash:Ng+LIpapqRQkKTPwXh7yXKX5NtY'),(7,'android:apk-key-hash:0ISCKJtftf64fgtHqUkd4BhMkTk');
 /*!40000 ALTER TABLE `facets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
