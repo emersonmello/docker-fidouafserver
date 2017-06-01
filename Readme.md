@@ -31,6 +31,10 @@ This project show how to run [eBay FIDO UAF Demo Server](https://github.com/emer
      - http://localhost:8000/fidouaf/v1/stats
      - http://localhost:8000/fidouaf/v1/history
      - http://localhost:8000/fidouaf/v1/public/regRequest/johndoe
+     - Endpoint for whitelisting the UUID
+       - http://localhost:8000/fidouaf/v1/whitelistuuid/{URL_ENCODED_VALUE}
+     - Endpoint for whitelisting the Facet Id
+       - http://localhost:8000/fidouaf/v1/whitelistfacetid/{URL_ENCODED_VALUE}
 
 ## Using mysql client inside a MySQL container
 
